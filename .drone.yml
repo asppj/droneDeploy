@@ -25,7 +25,7 @@ steps:
       key:
         from_secret: privateKey
       target: /root/deploy-prometheus/prometheus
-      source: bin/prometheus
+      source: bin/runner
 
   - name: ssh commands
     image: appleboy/drone-ssh
