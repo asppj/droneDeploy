@@ -1,0 +1,37 @@
+kind: pipeline
+type: docker # exec, ssh ,kubernetes
+name: default
+
+platform:
+  arch: amd64
+
+steps:
+  - name: build
+    image: golang
+    volumes:
+      - name: deps
+        path: /go
+    commands:
+      - make build
+
+  - name: scp files
+    image: appleboy/drone-scp
+    settings:
+      host: www.asppj.top
+      port: 22
+      key:
+        from_secret: privateKey
+      target: /root/deploy-prometheus/prometheus
+      source: bin/prometheus
+      timeout: 60
+
+  - name: ssh commands
+    image: appleboy/drone-ssh
+    settings:
+      host:  www.asppj.top
+      port: 22
+      key:
+        from_secret: privateKey
+      script:
+        - echo hello
+        - echo world
