@@ -18,20 +18,6 @@ steps:
       - ls 
       - bin/runner -v
 
-  - name: scp files
-    image: appleboy/drone-scp
-    settings:
-      host: 
-        - www.asppj.top
-      port: 22
-      secrets:
-        source: private_ssh
-        target: scp_key
-      key: 
-        from_secret: private_ssh
-      target: /root/deploy-prometheus/prometheus
-      source: bin/runner
-
   - name: ssh commands
     image: appleboy/drone-ssh
     settings:
@@ -40,12 +26,20 @@ steps:
       port: 22
       key: 
         from_secret: private_ssh
-      secrets:
-        source: private_ssh
-        target: ssh_key
       script:
         - echo hello
         - echo world
         - uname -a
         - pwd
         - ls
+
+  - name: scp files
+    image: appleboy/drone-scp
+    settings:
+      host: 
+        - www.asppj.top
+      port: 22
+      key: 
+        from_secret: private_ssh
+      target: /root/deploy-prometheus/prometheus
+      source: bin/runner
