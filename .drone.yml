@@ -17,9 +17,7 @@ steps:
       - make build
       - ls 
       - bin/runner -v
-    when:                                          
-      event:
-      - push
+
 
 
   - name: scp files
@@ -37,9 +35,7 @@ steps:
       source: 
         - bin/runner
         - scripts/deploy.sh
-    when:                                           
-      event:
-      - push
+
   - name: ssh commands
     image: appleboy/drone-ssh
     settings:
@@ -55,9 +51,7 @@ steps:
         - pwd
         - ls
         - ~/deploy-droneDeploy/droneDeploy/bin/runner -v
-    when:                                          
-      event:
-        - push
+
 
   - name: publish
     image: plugins/github-release
@@ -65,6 +59,4 @@ steps:
       api_key: 
         from_secret: github_token
       files: bin/
-    when:
-      event: 
-        - push
+
