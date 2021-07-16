@@ -17,7 +17,9 @@ steps:
       - make build
       - ls 
       - bin/runner -v
-
+    when:                                          
+      event:
+      - push
 
 
   - name: scp files
@@ -31,9 +33,13 @@ steps:
         from_secret: private_ssh
       // password: 
       //   from_secret: ali_password
-      target: /root/deploy-prometheus/prometheus
-      source: bin/runner
-
+      target: /root/deploy-droneDeploy/droneDeploy
+      source: 
+        - bin/runner
+        - scripts/deploy.sh
+    when:                                           
+      event:
+      - push
   - name: ssh commands
     image: appleboy/drone-ssh
     settings:
@@ -48,4 +54,7 @@ steps:
         - uname -a
         - pwd
         - ls
-        - ~/deploy-prometheus/bin/runner -v
+        - ~/deploy-droneDeploy/droneDeploy/bin/runner -v
+    when:                                          
+      event:
+      - push
