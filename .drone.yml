@@ -20,7 +20,8 @@ steps:
   - name: scp files
     image: appleboy/drone-scp
     settings:
-      host: www.asppj.top
+      host: 
+        - www.asppj.top
       port: 22
       key:
         from_secret: privateKey
@@ -30,7 +31,8 @@ steps:
   - name: ssh commands
     image: appleboy/drone-ssh
     settings:
-      host:  www.asppj.top
+      host:
+        -  www.asppj.top
       port: 22
       key:
         from_secret: privateKey
