@@ -58,3 +58,27 @@ steps:
     when:                                          
       event:
       - push
+
+    - name: publish
+      image: plugins/github-release
+      settings:
+        api_key: 
+          from_secret: github_token
+        files: bin/
+      when:
+        event: push
+
+  // - name: notify
+  //   image: drillster/drone-email
+  //   settings:
+  //     port: 25
+  //     from: test@test.com
+  //     host: smtp.test.com
+  //     username: test@test.com
+  //     password:
+  //       from_secret: email_password
+  //     skip_verify: true
+  //     recipients: [ test@test.com ]
+  //     recipients_only: true
+  //   when:
+  //     status: [ success, changed, failure ]
