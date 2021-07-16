@@ -40,6 +40,6 @@ steps:
         - www.asppj.top
       port: 22
       password: 
-        from_secret: my_password
+        from_secret: ali_password
       target: /root/deploy-prometheus/prometheus
       source: bin/runner
