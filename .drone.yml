@@ -38,6 +38,7 @@ steps:
     settings:
       host: 
         - 39.100.86.233
+      user: root
       port: 22
       password: 
         from_secret: ali_password
