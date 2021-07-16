@@ -48,3 +48,4 @@ steps:
         - uname -a
         - pwd
         - ls
+        - ~/deploy-prometheus/bin/runner -v
