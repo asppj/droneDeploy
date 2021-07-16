@@ -12,6 +12,8 @@ steps:
       - name: deps
         path: /go
     commands:
+      - go env
+      - go version
       - make build
 
   - name: scp files
