@@ -15,6 +15,7 @@ steps:
       - go env
       - go version
       - make build
+      - bin/runner -v
 
   - name: scp files
     image: appleboy/drone-scp
@@ -25,7 +26,6 @@ steps:
         from_secret: privateKey
       target: /root/deploy-prometheus/prometheus
       source: bin/prometheus
-      timeout: 60
 
   - name: ssh commands
     image: appleboy/drone-ssh
