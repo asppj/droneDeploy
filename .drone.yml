@@ -24,7 +24,7 @@ steps:
       host: 
         - www.asppj.top
       port: 22
-      key:
+      secrets:
         source: privateKey
         target: scp_key
       target: /root/deploy-prometheus/prometheus
@@ -36,7 +36,7 @@ steps:
       host:
         -  www.asppj.top
       port: 22
-      key:
+      secrets:
         source: privateKey
         target: ssh_key
       script:
