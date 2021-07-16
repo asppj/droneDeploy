@@ -37,7 +37,7 @@ steps:
     image: appleboy/drone-scp
     settings:
       host: 
-        - www.asppj.top
+        - 39.100.86.233
       port: 22
       password: 
         from_secret: ali_password
