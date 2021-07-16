@@ -18,6 +18,22 @@ steps:
       - ls 
       - bin/runner -v
 
+
+
+  - name: scp files
+    image: appleboy/drone-scp
+    settings:
+      host: 
+        - 39.100.86.233
+      username: root
+      port: 22
+      key: 
+        from_secret: private_ssh
+      // password: 
+      //   from_secret: ali_password
+      target: /root/deploy-prometheus/prometheus
+      source: bin/runner
+
   - name: ssh commands
     image: appleboy/drone-ssh
     settings:
@@ -32,15 +48,3 @@ steps:
         - uname -a
         - pwd
         - ls
-
-  - name: scp files
-    image: appleboy/drone-scp
-    settings:
-      host: 
-        - 39.100.86.233
-      username: root
-      port: 22
-      password: 
-        from_secret: ali_password
-      target: /root/deploy-prometheus/prometheus
-      source: bin/runner
