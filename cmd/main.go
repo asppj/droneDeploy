@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/asppj/droneDeploy/conf"
-	http2 "github.com/asppj/droneDeploy/internal/httpServer"
+	http2 "github.com/asppj/droneDeploy/internal/http"
 
 	"github.com/spf13/pflag"
 )
