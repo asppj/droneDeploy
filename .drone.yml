@@ -17,6 +17,7 @@ steps:
       - make build
       - ls 
       - bin/runner -v
+      - env
 
 
 
